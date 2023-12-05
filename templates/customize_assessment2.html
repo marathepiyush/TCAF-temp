@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="switch_dimension_category.js"></script>
+
+<div class="col-1 d-flex justify-content-center">
+  <div id="mySidenav" class="sidenav">
+   <!--   <input id="Cancel" src="C:\DeloitteFI\Cancel.PNG" type="image"  alt="cancel" style="width: 30" height="30"  onclick="closeNav()">"/> --> 
+   <h7 class="Hello">Hello, </h7> <h7 class="user">David</h7>
+   <a href="javascript:void(0)" class="closebtn"
+   onclick="closeNav()">
+   ×</a>  
+   <div><hr class="style1"></div>
+   
+   <a href="C:\DeloitteFI\TACF2.0\Home_Page\My_Assesments.html" target="_blank">View My Assessments</a>
+   <a href="C:\DeloitteFI\TACF2.0\Home_Page\suggestion.html" target="_blank">Suggestions & Feedback</a>
+   <a href="C:\DeloitteFI\TACF2.0\Home_Page\help.html" target="_blank">Help & FAQ</a>
+  </div>
+  
+</div>
+
+
+<nav class="navbar">
+  <div class="menu-icon">
+      <div class="container" onclick="Nav()">
+        <div class="animated-icon"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+  </div>
+  
+     <a class="navbar-brand1" href="C:\DeloitteFI\TACF2.0\home_page_1.html" style="text-decoration: none;">
+      <b class="navbar-brand3" style="color: #F5F5F5; margin-bottom: 13px;">Deloitte<b style="width: 15px; height: 15px; flex-shrink: 0; color: #7FC241;">.</b></b>
+      <span class="vl"></span>
+      <span class="navbar-brand2" style="text-decoration: none; color: #86BC25; ">TCAF 2.0</span>
+    </a>
+       
+                 <a href="http://www.google.com" > 
+            <img id="Alerts" src="C:\DeloitteFI\TACF2.0\Home_Page\Alert icon.svg" alt="Alert" style="width:50" height="50">
+            <br>
+            <label  id="AlertName">Alerts</label>
+          </a> 
+          <a href="http://www.google.com" target="_blank"> 
+            <img id="login" src="C:\DeloitteFI\TACF2.0\Home_Page\Profile Icon.svg" alt="login" style="width:50" height="50">
+            <br>
+            <label  id="loginName">David</label>
+          </a> 
+  
+</nav>
+<br>
+<h1 class="top-heading">Select Dimensions and categories as required</h1> <br>
+
+
+
+<div class="h-90  " style="width:100%; display:flex; border: 1px solid; padding: 10px; ">
+    <div class="overflow-auto" style="margin-left: 50px;">
+        <ol class="tr-box">
+            <input type="checkbox" class="vehicle12" name="vehicle1" value="Bike">
+            <label class="vehicle21" for="vehicle2"> Organization Structure</label><br>
+          </ol>
+            <ol class="tr-innerbox" >
+                <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -70px;">
+                <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Business Alignment</label><br>
+                <input type="checkbox" class="vehicle12" name="vehicle3" value="Boat" style="margin-left: -132px;">
+                <label for="vehicle3" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Governance</label><br>
+                <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -142px;">
+                <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Innovation</label><br>
+                <input type="checkbox" class="vehicle12" name="vehicle3" value="Boat" style="margin-left: -60px;">
+                <label for="vehicle3" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Tools and processes</label><br>
+            </ol>
+        <ol class="tr-box">
+            <input type="checkbox" class="vehicle121" name="vehicle1" value="Bike">
+            <label class="vehicle211" for="vehicle2"> Quality Engineering</label><br>
+          </ol>
+            <ol class="tr-innerbox" >
+                <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -90px;">
+                <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Test Management</label><br>
+                <input type="checkbox" class="vehicle12" name="vehicle3" value="Boat" style="margin-left: -125px;">
+                <label for="vehicle3" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Test Planning</label><br>
+                <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -140px;">
+                <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Test Design</label><br>
+                <input type="checkbox" class="vehicle12" name="vehicle3" value="Boat" style="margin-left: -115px;">
+                <label for="vehicle3" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Test Execution</label><br>
+                <input type="checkbox" class="vehicle12" name="vehicle3" value="Boat" style="margin-left: -115px;">
+                <label for="vehicle3" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Test Reporting</label><br>
+            </ol>
+       
+        <ol class="tr-box">
+            <input type="checkbox"  class="vehicle12" name="vehicle1" value="Bike">
+            <label class="vehicle212" for="vehicle2"> Test Data Management</label><br>
+            </ol>
+            <ol class="tr-innerbox" >
+                <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -55px;">
+                <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Master data Avalability</label><br>
+                <input type="checkbox"class="vehicle12" name="vehicle3" value="Boat" style="margin-left: -0px;">
+                <label for="vehicle3" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Transactional Data Avalability</label><br>
+                <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -133px;">
+                <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Data Refresh</label><br>
+                <input type="checkbox" class="vehicle12" name="vehicle3" value="Boat" style="margin-left: -45px;">
+                <label for="vehicle3" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> TDM Tools and services</label><br>
+
+            </ol>
+
+    </div>
+
+    <div class="w-100 " id="qualityEngButtons"
+         style="max-width: 300px; max-height: 1000px; margin-left: 500px;  ">
+        <ol class="tr-box">
+            <input type="checkbox" class="vehicle123" name="vehicle1" value="Bike">
+            <label class="vehicle213" for="vehicle2"> Test Environment</label><br>
+          </ol>
+            <ol class="tr-innerbox">
+                <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -100px;">
+                <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Communication & Reporting</label><br>
+                <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -235px;">
+                <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Integration</label><br>
+                <input type="checkbox" class="vehicle12" name="vehicle3" value="Boat" style="margin-left: -180px;">
+                <label for="vehicle3" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Build deployment</label><br>
+            </ol>
+          <ol class="tr-box">
+              <input type="checkbox" class="vehicle123" name="vehicle1" value="Bike">
+              <label class="vehicle213" for="vehicle2">Specialization QE</label><br>
+          </ol>
+              <ol class="tr-innerbox">
+                  <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -230px;">
+                  <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Automation</label><br>
+                  <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -195px;">
+                  <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Cloud Migration</label><br>
+                  <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -215px;">
+                  <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> Performance</label><br>
+              </ol><br><br>
+           <ol class="tr-box">
+            <input type="checkbox" class="vehicle124" name="vehicle1" value="Bike">
+            <label class="vehicle214" for="vehicle2"> DevOps</label><br>
+          </ol>
+            <ol class="tr-innerbox">
+                <input type="checkbox" class="vehicle12" name="vehicle2" value="Car" style="margin-left: -240px;">
+                <label for="vehicle2" style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;"> CI/CD/CT</label><br>
+            </ol>
+    </div>
+</div>
+
+<input type="submit" class="btn btn-primary" style="margin:auto; margin-bottom: 20px; border-radius: 10px; background: #86BC25; color: #FFF;font-family: Roboto;font-size: 24px;font-style: normal;font-weight: 500;line-height: normal; margin-left: 100px;" onclick="show('popup')" value="Complete Customization">
+<br>
+<!-- This is what will be included inside the popup -->
+<div class="popup" id="popup" style="font-family:Poppins;width:1047px;height:433px; margin-left: -500px; margin-top: -200px;">
+    <p style="color: rgba(24, 0, 0, 0.75);
+    font-family: Roboto;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;     float: left;
+    margin-left: 40px; margin-bottom: 20px;">Custom Assessment Created!</p> 
+    <a href="#" onclick="hide('popup')" style="color: #524040;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; margin-left: 340px;">&#10060;</a><br><br><br><br>
+    <table border="1px solid black"
+           style="width:100%;border-collapse:collapse;background-color: #ECFFDC;font-family:Arial">
+        <tr >
+            <td style="text-align:left; color: #000;
+font-family: Roboto;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal; width: 600px;
+height: 50px;
+border: 1px solid #524040;
+background: #FFF;">https:\\Example.com <img style="float: right;" src="C:\DeloitteFI\TACF2.0\Initiative_Page\Vector.svg"></td>
+        </tr>
+    </table>
+    <br><br><br>
+    <input class="button-1" style="margin:auto; width: 300px;
+    height: 60px; border-radius: 10px;
+background: #86BC25; color: #FFF;
+font-family: Roboto;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;" type="button" , value="Copy & Proceed">
+    <br><br><br>
+    
+    <p>Copied URL can be shared with user to access the customized assessment.</p>
+</div>
+<style>
+/*Nav Bar CSS*/
+.navbar{
+  width: 100%;
+  height: 90px;
+  flex-shrink: 0;
+  border-bottom: 0.4px solid #F5F5F5;
+  background: #000;
+  
+}
+
+.navbar-brand1{
+    color: #F5F5F5; 
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none; 
+    height: 75px; 
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+.vl{
+  width: 2px;
+  height: 40px;
+  background: #F5F5F5; 
+  margin:0 15px;
+  display: inline-block;
+  margin-bottom: 5px;
+
+}
+.navbar-brand2{
+  color: #86BC25;
+font-family: Roboto;
+font-size: 35px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;  
+}
+
+#login{
+margin-right: auto;
+width: 34px;
+height: 34px;
+flex-shrink: 0;
+margin-right: 20px;
+  }
+#loginName{
+  color: #F5F5F5;
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-right: 20px;
+}
+#Alerts{
+  width: 34px;
+height: 34px;
+flex-shrink: 0;
+margin-right: 25px;
+}
+#AlertName{
+  color: #F5F5F5;
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-right: 25px;
+}
+
+/*SideBar Menu */
+.menu-icon {
+  margin:15px 10px 0;
+}
+.animated-icon {
+  width: 30px;
+  height: 30px;
+  position: relative; 
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  margin-bottom: 15px;
+  margin-right: 3px;
+  }
+  
+  .animated-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  }
+  
+  .animated-icon span {
+  background: #f3e5f5;
+  }
+  
+  .animated-icon span:nth-child(1) {
+  top: 0px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  }
+  
+  .animated-icon span:nth-child(2) {
+  top: 10px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  }
+  
+  .animated-icon span:nth-child(3) {
+  top: 20px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  }
+  
+  .animated-icon.open span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 0px;
+  left: 8px;
+  }
+  
+  .animated-icon.open span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+  }
+  
+  .animated-icon.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 21px;
+  left: 8px;
+}
+.sidenav {
+  height: 100%;
+width: 0px;
+position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  background-color: #0a0a0a!important;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 0px 0px 8px #888888;
+  overflow: hidden;
+}
+
+.sidenav a {
+  margin-top: 10px;
+  padding: 8px 8px 8px 16px;
+  text-decoration: none;
+  font-size: 22px;
+  color: #F5F5F5;
+  display: block;
+  transition: 0.3s;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  
+}
+
+.sidenav a:hover {
+  color: #F5F5F5;
+  background-color: green;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.sidenav::-webkit-scrollbar { 
+  display: none; 
+} 
+
+.sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 15px;
+            font-size: 30px;
+            fill: #F5F5F5;
+            stroke-width: 3.6px;
+            stroke: #F5F5F5;         
+}
+
+.Hello{
+color: #F5F5F5;
+font-family: Roboto;
+font-size: 35px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-left: 30px;
+}
+.user{
+  color: #F5F5F5;
+font-family: Roboto;
+font-size: 35px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+justify-content: center;
+}
+.top-heading {
+  width: 100%;
+  text-align: center;
+    background: #86BC25;
+    font-size: 30px;
+    font-style: normal;
+    color: #FFF;
+    font-weight: 700;
+    padding: 10px;
+    line-height: normal;
+    width: auto;
+height: 50px;
+flex-shrink: 0;
+}
+.vehicle12{
+  width: 18px;
+height: 18px;
+flex-shrink: 0;
+fill: #FFF;
+}
+.vehicle123{
+  width: 18px;
+height: 18px;
+flex-shrink: 0;
+fill: #FFF;
+}
+
+.vehicle124{
+  width: 18px;
+height: 18px;
+flex-shrink: 0;
+fill: #FFF;
+}
+.vehicle21{
+  color: #FFF;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-top: 11px;
+margin-bottom: 14px;
+margin-right: 25px;
+}
+.vehicle121{
+  width: 18px;
+height: 18px;
+flex-shrink: 0;
+fill: #FFF;
+}
+.vehicle211{
+  color: #FFF;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-top: 12px;
+margin-bottom: 14px;
+margin-right: 60px;
+}
+.vehicle212{
+  color: #FFF;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-top: 12px;
+margin-bottom: 14px;
+margin-right: 25px;
+}
+.vehicle213{
+  color: #FFF;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-top: 10px;
+margin-bottom: 14px;
+margin-right: 70px;
+}
+.vehicle214{
+  color: #FFF;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-top: 10px;
+margin-bottom: 14px;
+margin-right: 150px;
+}
+.tr-box{
+  width: 300px;
+height: 45px;
+flex-shrink: 0;
+background: #86BC25;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  padding: 10px;
+  width: 280px;
+  left: 50%;
+  margin-left: -150px;
+  height: 240px;
+  top: 50%;
+  margin-top: -100px;
+  background: #FFF;
+  border: 3px solid #0FFF50;
+  z-index: 20;
+}
+
+#popup:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -2;
+}
+
+
+#popup:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #FFF;
+  z-index: -1;
+}
+
+/* Styling buttons & webpage */
+
+body {
+  background: offwhite;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.popupk {
+  display: none;
+  position: fixed;
+  padding: 10px;
+  width: 280px;
+  left: 50%;
+  margin-left: -150px;
+  height: 180px;
+  top: 50%;
+  margin-top: -100px;
+  background: #FFF;
+  border: 3px solid #F04A49;
+  z-index: 20;
+}
+
+#popupk:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -2;
+}
+
+#popupk:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #FFF;
+  z-index: -1;
+}
+
+/* Styling buttons & webpage */
+
+body {
+  background: offwhite;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+
+
+</style>
+ <script>
+ $ = function(id) {
+  return document.getElementById(id);
+}
+
+var show = function(id) {
+	$(id).style.display ='block';
+}
+var hide = function(id) {
+	$(id).style.display ='none';
+}
+
+function Nav() {
+  var width = document.getElementById("mySidenav").style.width;
+  if (width === "0px" || width == "") {
+    document.getElementById("mySidenav").style.width = "280px";
+    $('.animated-icon').toggleClass('open');
+  }
+  else {
+    document.getElementById("mySidenav").style.width = "0px";
+    $('.animated-icon').toggleClass('open');
+  }
+  }
+  function closeNav() {
+            document.getElementById(
+                "mySidenav").style.width = "0";
+                document.getElementById("mySidenav").style.width = "0px";
+   $('.animated-icon').toggleClass('open');
+        }
+ </script>
+</body>
+</html>

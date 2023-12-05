@@ -1,0 +1,92 @@
+{% extends 'page.html' %}
+{% load static %}
+{% load custom_template_tags %}
+
+{% block content %}
+  <div class="row mx-5 mt-5 shadow-sm p-3 mb-5 bg-white rounded">
+    <div class="col-4">
+      <img src="{% static 'images/selection.png' %}" width=500 alt="">
+    </div>
+    <div class="col-1"></div>
+    <div class="col-7">
+      <p class="">
+        Please see the below capabilities that are recommended as per the role. Select any of them that you would like to answer and get insights on. Feel free to explore other capabilities of testing from the below dropdown.
+      </p>
+      <div class="container">
+        <div class="row">
+          <h4 class="content-font" style="font-weight:800">Hand pick sections:</h4>
+          <div class="col-6">
+          <button type="button" class="btn btn-sm btn-success mt-3" onclick='selects()' >Click here to select all <fa class="fa fa-check-circle"></fa></button>
+            <!-- INSERT FORM FUNCTIONALITY HERE -->
+            {% setvar desig as client_designation %}
+            {% setvar email as client_email %}
+            <form action="{% url 'save_choices' client_email client_designation %}" method="POST"  enctype="multipart/form-data" class="form" role="form">
+                {% csrf_token %}
+                  {% for item in eligible_topics %}
+                  <div class="row mt-3">
+                  <div class="container">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="{{item.topic}}" name="section" id="section"/> {{item.topic}}
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+            </form>
+
+              <!-- END FORM FUNCTIONALITY HERE -->
+              </div>
+
+              <div class="col-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <i class="">*You can select/search multiple sections or any other information can be mentioned here</i>
+                    </div>
+                    <div class="card-body">
+                      <b class="text-muted"><label class="">Explore other sections:</label></b>
+                          <select name="other_section" id="other_section" class="selectpicker mt-3" multiple data-live-search="true" onclick='dropdown_selects()'>
+                            {%for t in rest_topics%}
+                              <option>{{t}}</option>
+                            {% endfor %}
+                          </select>
+                    </div>
+                    <script type="text/javascript">
+                      function selects(){
+                          var ele=document.getElementsByName('section');
+                          for(var i=0; i<ele.length; i++){
+                              if(ele[i].type=='checkbox')
+                                if (ele[i].checked==false)
+                                  ele[i].checked=true;
+<!--                                else-->
+<!--                                  ele[i].checked=false;-->
+                          }
+                      }
+
+                      function dropdown_selects() {
+                          var x = document.getElementByName('other_section')
+                          var selected = [];
+                          for (var option of document.getElementByName('other_section').options)
+                          {
+                              if (option.selected) {
+                                  selected.push(option.value);
+                              }
+                          }
+                          console.log(selected);
+                      }
+
+                      $(function() {
+                        $('select').selectpicker();
+                      });
+                    </script>
+                  </div>
+              </div>
+
+              <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-4">
+                <br><button type="submit" class="btn btn-sm btn-success mt-3" name="button_action" values="proceed">Save & Proceed</button>
+              </div>
+              </div>
+
+      </div>
+    </div>
+    </div></div>
+{% endblock %}

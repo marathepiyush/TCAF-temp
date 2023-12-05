@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+{% load custom_template_tags %}
+{% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap & CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- Font Awesome JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- w3 cSS -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <title>Section Selection</title>
+</head>
+
+<body class="content-font bg-light">
+  <nav class="navbar navbar-expand-lg bg-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand" target="_blank">
+        <img src="{% static 'images/logo1.png' %}" width=130 height="25" class="d-inline-block align-top" alt="">
+      </a>
+    </div>
+  </nav>
+  <div class="row mx-5 mt-5 shadow-sm p-3 mb-5 bg-white rounded">
+    <div class="col-5">
+      <div class="container">
+        <div class="">
+          <h5 class="content-font" style="font-weight:800">Hand pick sections:</h5>
+          <!-- Select all button -->
+          <button type="button" class="btn btn-sm btn-success mt-3" onclick='selects()' >Click here to select all <fa class="fa fa-check-circle"></fa></button>
+          <!-- end of select all -->
+          <!-- INSERT FORM FUNCTIONALITY HERE -->
+              {% setvar desig as client_designation %}
+            {% setvar email as client_email %}
+          <form action="{% url 'save_choices' client_email client_designation %}" method="POST"  enctype="multipart/form-data" class="form" role="form">
+            {% csrf_token %}
+            {% for item in eligible_topics %}
+              <div class="checkbox">
+                      <input type="checkbox" name="section" id="section" value="{{item.topic}}"/> {{item.topic}}
+                </div>
+            {% endfor %}
+              <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+              <br><button type="submit" class="btn btn-sm btn-success mt-3" name="button_action" values="proceed">Save & Proceed</button>
+            </div>
+        </div>
+<!--      <button type="submit" class="login-button btn btn-sm mt-4 round-edge text-white">Save Choices and Proceed<i class="fa fa-arrow-right me-2 mx-2"></i></button>-->
+              </form>
+          <!-- END FORM FUNCTIONALITY HERE -->
+        </div>
+      </div>
+
+    </div>
+    <div class="col-3">
+      Please select the topics which you would like to answer and get more insights on.
+    </div>
+    <div class="col-3">
+      <img src="{% static 'images/selection.PNG' %}" width=400  alt="">
+    </div>
+  </div>
+<script type="text/javascript">
+            function selects(){
+                var ele=document.getElementsByName('section');
+                for(var i=0; i<ele.length; i++){
+                    if(ele[i].type=='checkbox')
+                      if (ele[i].checked==true)
+                        ele[i].checked=false;
+                      else
+                        ele[i].checked=true;
+                }
+            }
+
+        </script>
+</body>
+
+
+</html>

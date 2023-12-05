@@ -1,0 +1,506 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!-- saved from url=(0109)file:///C:/Users/tumata/AppData/Local/Microsoft/Windows/INetCache/Content.Outlook/WRDNF7SK/score_summary.html -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>questionnaire_page</title>
+    <link rel="stylesheet" href="./score_summary_files/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="./score_summary_files/css" rel="stylesheet">
+    <link href="./score_summary_files/bootstrap.min(1).css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+* {
+  box-sizing: border-box;
+}
+.navbar-brand{
+    margin-left: 20px;
+}
+.row {
+  margin-left:-5px;
+  margin-right:-5px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 15px;
+}
+
+tr:nth-child(even) {
+  background-color: none;
+}
+.label {
+  color: white;
+  padding: 8px;
+  font-family: Arial;
+  display: inline-block;
+}
+.info {
+background-color: black;
+}
+.container {
+    padding-top: 10px;
+    background-color: green;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #0a0a0a!important;
+
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 0px 0px 8px #888888;
+  overflow: hidden;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+  background-color: green;
+}
+
+.sidenav::-webkit-scrollbar {
+  display: none;
+}
+
+
+  .animated-icon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  margin: 0px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  }
+
+  .animated-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  }
+
+  .animated-icon span {
+  background: #f3e5f5;
+  }
+
+  .animated-icon span:nth-child(1) {
+  top: 0px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  }
+
+  .animated-icon span:nth-child(2) {
+  top: 10px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  }
+
+  .animated-icon span:nth-child(3) {
+  top: 20px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  }
+
+  .animated-icon.open span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 0px;
+  left: 8px;
+  }
+
+  .animated-icon.open span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+  }
+
+  .animated-icon.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 21px;
+  left: 8px;
+  }
+
+.sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 30px;
+            font-size: 30px;
+            margin-left: 40px;
+
+}
+#login{
+
+    background-color: white;
+  }
+
+        .input{
+            width:100%;
+        }
+        .btn{
+               background: #ccc;
+            }
+        .btn:focus{
+                background: red;
+                    }
+
+        .active {
+                    background-color: light green;
+                }
+    </style>
+</head>
+<body font-style="Poppins">
+<script src="./score_summary_files/jquery-3.2.1.slim.min.js.download"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="./score_summary_files/popper.min.js.download"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="./score_summary_files/bootstrap.min.js.download"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="./score_summary_files/bootstrap.bundle.min.js.download"></script>
+<script src="./score_summary_files/jquery.min.js.download"></script>
+
+<script>
+    function Nav() {
+  var width = document.getElementById("mySidenav").style.width;
+  if (width === "0px" || width == "") {
+    document.getElementById("mySidenav").style.width = "280px";
+    $('.animated-icon').toggleClass('open');
+  }
+  else {
+    document.getElementById("mySidenav").style.width = "0px";
+    $('.animated-icon').toggleClass('open');
+  }
+  }
+  function closeNav() {
+            document.getElementById(
+                "mySidenav").style.width = "0";
+                document.getElementById("mySidenav").style.width = "0px";
+   $('.animated-icon').toggleClass('open');
+        }
+  </script>
+
+<div class="row1">
+    <div class="col-1 d-flex justify-content-center">
+        <div id="mySidenav" class="sidenav">
+         <!--   <input id="Cancel" src="C:\DeloitteFI\Cancel.PNG" type="image"  alt="cancel" style="width: 30" height="30"  onclick="closeNav()">"/> -->
+         <a href="javascript:void(0)" class="closebtn"
+         onclick="closeNav()">
+         ×
+     </a>  <a href="{% url 'home' %}">Home</a>
+           <a href="{% url 'save_org' %}">Organizations</a>
+           <a href="{% url 'assessment_review' %}">View My Assessments</a>
+            <a href="C:\DeloitteFI\TACF2.0\suggestion.html" target="_blank">Suggestions & Feedback</a>
+            <a href="C:\DeloitteFI\TACF2.0\help.html" target="_blank">Help & FAQ</a>
+        </div>
+
+    </div>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="menu-icon">
+            <div class="container" onclick="Nav()">
+              <div class="animated-icon"><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            </div>
+        <a class="navbar-brand" href="#"><b>Deloitte<b class="text-success">.</b></b></a>
+        <div class="collapse navbar-collapse justify-content-center"
+             id="navbarCenteredExample">
+            <a class="navbar-brand" href="#" style="padding-right: 90px">TCAF 2.0</a>
+        </div>
+        <a href="{% url 'logout' %}" target="_blank">
+            Logout
+        </a>
+    </div>
+</nav>
+<b><h1 style="text-align:center;font-family:Poppins">Score Summary</h1></b>
+<div style="width:100%; display:flex;">
+    <div style="width:60%;margin-left:30px;padding:20px">
+        <div style="border-style:solid;height:100%;width:100%">
+            <div style="width: 100%; margin: 0 auto;">
+                <canvas id="radarChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div style="width:60%;margin-right:100px;padding:20px;">
+        <div>
+            <table style="width:110%;background-color: #000000;font-family:Poppins; color:#ffffff;font-size:12px;">
+                <tbody>
+                <tr>
+                    <td style="text-align:right">Project Name</td>
+                    <td style="text-align:center;"><input type="text" class="input" placeholder="Project Name"></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Client Organization Name</td>
+                    <td style="text-align:center"><input type="text" class="input"
+                                                         placeholder="Client Organization Name"></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Service Tenure</td>
+                    <td style="text-align:center"><input type="text" class="input" placeholder="Service Tenure"></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Evaluation Tenure</td>
+                    <td style="text-align:center"><input type="text" class="input" placeholder="Evaluation Tenure"></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">Model</td>
+                    <td style="text-align:center">
+                        <select name="cars" id="cars" style="width:90%">
+                            <option value="agile">Agile</option>
+                            <option value="waterfall">Water fall</option>
+                            <option value="linear">Hybrid</option>
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            {% for item in data %}
+            {% for category, category_list in item.items %}
+            <h5 style="font-family:Poppins; color:#006241;text-align:left;"><b>{{category}}</b></h5>
+            {% for category_item in category_list %}
+            {% for dimension, dimension_value in category_item.items %}
+            <table style="width:110%;font-family:Poppins;font-size:12px;">
+                <tbody>
+                <tr>
+                    <td style="text-align:center;background-color:none;font-size: 11px;">{{dimension}}</td>
+                    <td style="text-align:center; background-color:none">
+                        {% if dimension_value <= 30 %}
+                        <button class="small-size business_alignment"
+                                style="font-size: 11px; background-color: #4CAF50">Adhoc
+                        </button>
+                        <button class="medium-size business_alignment" style="font-size: 11px;">Initial</button>
+                        <button class="large-size business_alignment" style="font-size: 11px;">Followed</button>
+                        <button class="small-size business_alignment" style="font-size: 11px;">Measured</button>
+                        <button class="medium-size business_alignment" style="font-size: 11px;">Optimized</button>
+                        {% elif dimension_value > 30 and dimension_value <= 50 %}
+                        <button class="small-size business_alignment" style="font-size: 11px;">Adhoc</button>
+                        <button class="medium-size business_alignment"
+                                style="font-size: 11px; background-color: #4CAF50">Initial
+                        </button>
+                        <button class="large-size business_alignment" style="font-size: 11px;">Followed</button>
+                        <button class="small-size business_alignment" style="font-size: 11px;">Measured</button>
+                        <button class="medium-size business_alignment" style="font-size: 11px;">Optimized</button>
+                        {% elif dimension_value > 50 and dimension_value <= 70 %}
+                        <button class="small-size business_alignment" style="font-size: 11px;">Adhoc</button>
+                        <button class="medium-size business_alignment"
+                                style="font-size: 11px;">Initial
+                        </button>
+                        <button class="large-size business_alignment"
+                                style="font-size: 11px; background-color: #4CAF50">Followed
+                        </button>
+                        <button class="small-size business_alignment" style="font-size: 11px;">Measured</button>
+                        <button class="medium-size business_alignment" style="font-size: 11px;">Optimized</button>
+                        {% elif dimension_value > 70 and dimension_value <= 90 %}
+                        <button class="small-size business_alignment" style="font-size: 11px;">Adhoc</button>
+                        <button class="medium-size business_alignment"
+                                style="font-size: 11px;">Initial
+                        </button>
+                        <button class="large-size business_alignment"
+                                style="font-size: 11px;">Followed
+                        </button>
+                        <button class="small-size business_alignment" style="font-size: 11px;background-color: #4CAF50">
+                            Measured
+                        </button>
+                        <button class="medium-size business_alignment" style="font-size: 11px;">Optimized</button>
+                        {% elif dimension_value > 90 and dimension_value <= 100 %}
+                        <button class="small-size business_alignment" style="font-size: 11px;">Adhoc</button>
+                        <button class="medium-size business_alignment"
+                                style="font-size: 11px;">Initial
+                        </button>
+                        <button class="large-size business_alignment"
+                                style="font-size: 11px;">Followed
+                        </button>
+                        <button class="small-size business_alignment" style="font-size: 11px;">
+                            Measured
+                        </button>
+                        <button class="medium-size business_alignment"
+                                style="font-size: 11px;background-color: #4CAF50">Optimized
+                        </button>
+                        {% endif %}
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            {% endfor %}
+            {% endfor %}
+            {% endfor %}
+            {% endfor %}
+
+        </div>
+        <br>
+    </div>
+
+</div>
+<a href="{% url 'initiative' user_id %}"> <input class="button-1" style="margin:auto;font-size: 11px;" type="button" ,="" value="Proceed to Initiatives"></a>
+<br>
+<style>
+.button-1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px 12px;
+    font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    background: #000000;
+    background-origin: border-box;
+    box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+    }
+.my-menu {
+    text-align: center;
+  }
+  .popup {
+  display: none;    `
+  position: fixed;
+  padding: 10px;
+  width: 280px;
+  left: 50%;
+  margin-left: -150px;
+  height: 240px;
+  top: 50%;
+  margin-top: -100px;
+  background: #FFF;
+  border: 3px solid #F04A49;
+  z-index: 20;
+  }
+}
+.sizes{
+  display:grid;
+  grid-template-columns: repeat(3, 40px);  }
+.small-size, .medium-size, .large-size{ border: rgb(204, 204, 204) solid 0.5px; height: 30px;
+width: 80px;
+text-align:center;
+background-color: transparent;
+cursor: pointer;
+}
+.small-size:hover,.medium-size:hover,.large-size:hover{
+border: black solid 1px;
+height: 30px;
+width: 80px;
+text-align:center;
+color:rgb(219, 219, 219);
+background-color: black;
+cursor: pointer;
+}
+.size-selected{
+  border: black solid 1px;
+  height: 30px;
+  width: 80px;
+  text-align:center;
+  color:rgb(219, 219, 219);
+  background-color: green;
+  cursor: pointer;  }
+</style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Get the data from Django context
+        var labels = {{ context.labels | safe }};
+        var data = {{ context.data | safe }};
+
+        // Create the radar chart
+        var ctx = document.getElementById('radarChart').getContext('2d');
+        console.log('ctx: ', ctx);
+        var radarChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Score',
+                    data: data,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

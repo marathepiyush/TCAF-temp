@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>questionnaire_page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .input{
+            width:100%;
+        }
+        table,tr,th,td {
+         border:1px solid black;
+      }
+
+
+
+    </style>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><b>Deloitte<b class="text-success">.</b></b></a>
+        <div class="collapse navbar-collapse justify-content-center"
+             id="navbarCenteredExample">
+            <a class="navbar-brand" href="#">TCAF 2.0</a>
+        </div>
+    </div>
+</nav>
+<b><h1 style="text-align:center;">Insight</h1></b>
+<div style="width:100%; display:flex;">
+    <div style="width:30%;margin-left:100px;padding:20px">
+        <div style="border-style:solid;height:100%;">
+            <img src="{% static 'images/img4.png' %}" alt="" style="width:100%;height:100%;"/>
+        </div>
+    </div>
+
+    <div style="width:50%;margin-right:100px;padding:20px;">
+        <div>
+            <table border="1px solid black"
+                   style="width:100%;border-collapse:collapse;">
+                <tr>
+                    <td style="text-align:center">Organization Name</td>
+                    <td style="text-align:center"><input type="text" class="input" placeholder="Oranization Name"></td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">Assessee Name</td>
+                    <td style="text-align:center"><input type="text" class="input" placeholder="Assessee Name"></td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">Assessee Role</td>
+                    <td style="text-align:center"><input type="text" class="input" placeholder="Assessee Role"></td>
+                </tr>
+                <tr>
+                    <td style="text-align:center">Model</td>
+                    <td style="text-align:center">
+                        <select name="cars" id="cars" style="width:100%">
+                            <option value="agile">Agile</option>
+                            <option value="waterfall">Water fall</option>
+                            <option value="linear">Linear</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <br>
+
+            <table border="1px solid black"
+                   style="width:100%;border-collapse:collapse;">
+                <tr>
+                    <th style="text-align:center">Dimensions</th>
+                    <th style="text-align:center">Baseline Score</th>
+                    <th style="text-align:center">Actual Score</th>
+                </tr>
+                <tr>
+                    <td>D1 - Organization structure</td>
+                    <td style="text-align:center">100</td>
+                    <td style="text-align:center"><input type="text" class="input"></td>
+                </tr>
+                <tr>
+                    <td>D2 - Quality Engineering</td>
+                    <td style="text-align:center">250</td>
+                    <td style="text-align:center"><input type="text" class="input"></td>
+                </tr>
+                <tr>
+                    <td>D3 - Specialization QE</td>
+                    <td style="text-align:center">550</td>
+                    <td style="text-align:center"><input type="text" class="input"></td>
+                </tr>
+                <tr>
+                    <td>D4 - Test Environment Management</td>
+                    <td style="text-align:center">310</td>
+                    <td style="text-align:center"><input type="text" class="input"></td>
+                </tr>
+                <tr>
+                    <td>D5 - Test Data Management</td>
+                    <td style="text-align:center">440</td>
+                    <td style="text-align:center"><input type="text" class="input"></td>
+                </tr>
+                <tr>
+                    <td>D6 - DevOps</td>
+                    <td style="text-align:center">260</td>
+                    <td style="text-align:center"><input type="text" class="input"></td>
+                </tr>
+                <tr>
+                    <td>Overall</td>
+                    <td style="text-align:center">1910</td>
+                    <td style="text-align:center"><input type="text" class="input"></td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <center>
+                            <button type="button">Download</button>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</body>
+</html>

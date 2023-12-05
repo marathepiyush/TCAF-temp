@@ -1,0 +1,130 @@
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Review and Score</title>
+        <style>
+            table, th, td {
+              border: 5px solid black;
+            }
+            .center {
+              margin-left: auto;
+              margin-right: auto;
+            }
+            .styled-table {
+                border-collapse: collapse;
+                margin: 25px 0;
+                font-size: 0.9em;
+                font-family: sans-serif;
+                min-width: 400px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            }
+            .styled-table thead tr {
+                background-color: #009879;
+                color: #ffffff;
+                text-align: left;
+            }
+            .styled-table th,
+            .styled-table td {
+                padding: 12px 15px;
+            }
+            .styled-table tbody tr {
+                border-bottom: 1px solid #dddddd;
+            }
+
+            .styled-table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .styled-table tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+            }
+            .styled-table tbody tr.active-row {
+                font-weight: bold;
+                color: #009879;
+            }
+
+	</style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+    </head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><b>Deloitte<b class="text-success">.</b></b></a>
+            <div class="collapse navbar-collapse justify-content-center"
+            id="navbarCenteredExample">
+            <a class="navbar-brand " href="#" >TCAF 2.0</a>
+            
+            </div>
+        </div>
+    </nav>
+    <br>
+    <form method="POST" action="{% url 'calculate_score' %}">
+        {% csrf_token %}
+    <table class="styled-table">
+        <thead>
+		<tr>
+			<th width="50%">Responses</th>
+			<th>Scores</th>
+		</tr>
+        </thead>
+        {% for category, questions in data.items %}
+            <tr>
+                <td colspan="2" style="padding-top: 1%;padding-left: 5%"><h4>Category: {{category}}</h4></td>
+            </tr>
+            {% for question, answer in questions.items %}
+                <tr>
+                    <td>
+                        {% if question.ans_type == 'Upload' %}
+                            {{forloop.counter}}. {{question}}<br><br>
+                            <a href="/media/{{id}}/{{token}}/{{answer}}" download>Click here to download - {{answer}}</a>
+                        {% elif question.is_objective %}
+                            {{forloop.counter}}. {{question}}<br>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="{{question.pk}}" id="radio_{{question.pk}}_yes"/>
+                                <label class="form-check-label" for="radio2Example1">Yes</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="{{question.pk}}" id="radio_{{question.pk}}_no"/>
+                                <label class="form-check-label" for="radio2Example2">No</label>
+                            </div>
+                            <script>
+                                var radiobutton_yes = document.querySelector('#radio_{{question.pk}}_yes')
+                                var radiobutton_no = document.querySelector('#radio_{{question.pk}}_no')
+                                if('{{answer}}'==='yes'){
+                                    radiobutton_yes.checked = true;
+                                }
+                                else{
+                                    radiobutton_no.checked = true;
+                                }
+                            </script>
+                        {% else %}
+                            {{forloop.counter}}. {{question}}<br>
+                            <div class="form-outline mb-4">
+                                <textarea class="form-control" id="form4Example3" rows="4" name="text_{{question.pk}}">{{answer}}</textarea>
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if question.weightage|is_nan %}
+                        <input  type="text" value=0 name="score_{{question.pk}}">
+                        {% else %}
+                        <input  type="text" value={{question.weightage}} name="score_{{question.pk}}">
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+	</table>
+<div class="card-footer text-center">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+        </form>
+</body>
+</html>

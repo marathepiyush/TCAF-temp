@@ -1,0 +1,29 @@
+{% load render_table from django_tables2 %}
+
+------------------------&&
+
+<!-- your_template.html -->
+<select id="options">
+    <option value="volvo">Volvo</option>
+    <option value="audi">Audi</option>
+    <option value="bmw">BMW</option>
+    <option value="mercedes">Mercedes-Benz</option>
+</select>
+<div id="table-container">
+    {% render_table table %}
+</div>
+
+<script>
+    // Handle AJAX call when options are selected
+    $('#options').on('change', function () {
+        var selectedOption = $(this).val();
+        $.ajax({
+            url: '{% url "initiative" %}',  // Replace with your AJAX view URL
+            type: 'GET',
+            data: { selected_option: selectedOption },
+            success: function (data) {
+                $('#table-container').html(data);
+            }
+        });
+    });
+</script>

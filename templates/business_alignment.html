@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>questionnaire_page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<div class="p-3 bg-light" style="margin-left:1px; max-width: 10000px; max-height: 1000px;">
+    {% for dim, cat in category_dict.items %}
+    <button type="button" style="margin-bottom: 5px;width:100%;height:50px;" class="btn btn-success btn-lg btn-block"
+            id="{{dim|slice:'5:7'}}">{{dim}}
+    </button>
+    {% for cat_val in cat %}
+    {% if cat_val == category %}
+    <button type="button" class="btn btn-success btn-sm"
+            style="width:30%;height:50px;margin-bottom:30px;background-color: #959595"
+            id="{{cat_val|slice:':3'}}">
+        {{cat_val}}
+    </button>&nbsp;&nbsp;
+    {% else %}
+    <button type="button" class="btn btn-success btn-sm" style="width:20%;height:40px;margin-bottom:30px"
+            id="{{cat_val|slice:':4'}}">
+        {{cat_val}}
+    </button>&nbsp;&nbsp;
+    {% endif %}
+    {% endfor %}
+    <br><br>
+    {% endfor %}
+</div>
+
+
+<div class="mx-0 mx-sm-auto">
+    <div class="card">
+        <form method="POST" class="px-4" action="{% url 'categorical_questions' category id token %}" target="_self"
+              id="form">
+            {% csrf_token %}
+            {% for i in questions %}
+            <p class="text-left"><strong>{{ i.question }}</strong></p>
+            {% if i.is_objective %}
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="{{i.pk}}_yes" id="{{i.pk}}"/>
+                <label class="form-check-label" for="radio2Example1">Yes</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="{{i.pk}}_no" id={{i.pk}}/>
+                <label class="form-check-label" for="radio2Example2">No</label>
+            </div>
+            {% else %}
+            <div class="form-outline mb-4">
+                <textarea class="form-control" id="form4Example3" rows="4" name="{{i.pk}}"></textarea>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% if not finished %}
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-primary">Next</button>
+            </div>
+            {% else %}
+            <div class="card-footer text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <script>
+                    var form = document.querySelector('#form')
+                    form.target = "_parent"
+            </script>
+            {% endif %}
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+{% load custom_template_tags %}
+{% load static %}
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+
+   ul li{
+  display: inline;
+}
+  .slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 10px;
+  left: 1.9px;
+  bottom: 1.5px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+    .internal {
+      width: 15%;
+      height: 100%;
+      display: inline-block;
+    }
+    .center {
+
+      overflow: hidden;
+      white-space: nowrap;
+    }
+</style>
+
+  <!-- Bootstrap & CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- Font Awesome JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- w3 cSS -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <title>Form</title>
+
+</head>
+
+<body class="content-font bg-light">
+  <!-- Just an image -->
+  <nav class="navbar navbar-expand-lg bg-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand" target="_blank">
+        <img src="{% static 'images/logo1.png' %}" width=130 height="25" class="d-inline-block align-top" alt="">
+      </a></div>
+  </nav>
+
+  <div class="container mt-5 rounded">
+    <div class="row text-center">
+      <div class="col-3">
+        <img src="{% static 'images/checkbox3.svg' %}" height="150" alt="">
+      </div>
+      <div class="col-6">
+        <p class="text-muted"><b>{{topic_name}}</b><br>{{topic_description}}
+        <br><br>
+        <B> Note:</B> Please ensure to put appropriate comments if you do not wish to respond to any question. </p>
+      </div>
+      <div class="col-3 text-center">
+        <img src="{% static 'images/checkbox.svg' %}" height="150" alt="">
+      </div>
+    </div>
+  </div>
+<!--  <div class="container mt-4">-->
+<!--    <div class="row">-->
+<!--&lt;!&ndash;      <div class="col-1 mt-4">&ndash;&gt;-->
+<!--&lt;!&ndash;        <button id="left-button">&ndash;&gt;-->
+<!--&lt;!&ndash;          <i class="fa fa-chevron-circle-left"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--      <div class="col-10">-->
+<!--        <div class="center" id="content">-->
+<!--          <div class="container mt-4">-->
+<!--              {%for tp in chosen_topic_final_page%}-->
+<!--              <div class="internal col-3">-->
+<!--                  {%if tp == topic_name%}-->
+<!--                    <div class="shadow-sm p-1 breadcrumb-color text-center breadcrumb-size round-edge active" >-->
+<!--                     {{tp}}     <i class=" mx-1 me-1 fa fa-chevron-circle-right"></i>-->
+<!--                    </div>-->
+<!--                    {%else%}-->
+<!--                    <div class="shadow-sm p-1 text-center breadcrumb-size round-edge">-->
+<!--                     {{tp}}     <i class=" mx-1 me-1 fa fa-chevron-circle-right"></i>-->
+<!--                    </div>-->
+<!--                    {%endif%}-->
+<!--              </div>-->
+<!--              &nbsp;-->
+<!--              {%endfor%}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--&lt;!&ndash;      <div class="col-1  mt-4">&ndash;&gt;-->
+<!--&lt;!&ndash;        <button id="right-button">&ndash;&gt;-->
+<!--&lt;!&ndash;          <i class="fa fa-chevron-circle-right icon-color"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <ul>
+  <div class="d-flex row justify-content-center" style = "font-size:12px">
+  {%for tp in chosen_topic_final_page%}
+      {%if tp == topic_name%}
+      <div class="shadow-sm p-1 mx-1 me-1 mb-1 col-2 text-center round-edge breadcrumb-color" > {{tp}}
+      </div>
+      {%else%}
+      <div class="shadow-sm p-1 mx-1  me-1 mb-1 bg-white col-2 text-center round-edge " > {{tp}}  </div>
+       {%endif%}
+   {%endfor%}
+  </div>
+  </ul>
+
+  {% setvar desig as client_designation %}
+  {% setvar email as client_email %}
+  {% setvar chosen_topic as client_chosen_topic %}
+  {% setvar chosen_topic_final_page as client_chosen_topic_final_page %}
+
+
+<!--  <h3>{{query_results.client_email}}</h3>-->
+<form action="{% url 'section_page' client_email client_designation client_chosen_topic client_chosen_topic_final_page %}" method="POST"  enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container shadow-sm p-3 mb-5 bg-white rounded mt-4">
+
+    {% for item in query_results %}
+    <div class="row">
+      <div class="col-7">
+<!--        <p class="text-muted">-->
+          {{ item.question }}
+<!--        </p>-->
+        {% if not forloop.last %}
+          <hr noshade>
+        {%endif%}
+      </div>
+
+      <div class="col-1" >
+        <!-- Rounded switch -->
+        <label class="switch" >
+<!--          <input type="checkbox" name={{item.id}} value="Yes">-->
+          <input type="checkbox" id="resp_{{item.id}}" class ="checkbox{{item.id}}">
+          <span class="slider round"></span>
+
+        </label>
+        <br>
+      </div>
+      <div class="form-group col-4">
+<!--        <label for="exampleFormControlTextarea1">Comments</label>-->
+<!--        <form action="{% url 'commentSubmit' %}">-->
+
+          <input style = "font-size:10px" type="textarea" id="textarea1_{{item.id}}" rows="2" name="content" placeholder="*Comments" class = "inputBox{{item.id}}">
+<!--                    <input type="file" id="myFile" name="filename"/>-->
+
+      </div>
+<!--        <div class="form-group col3">-->
+<!--            <label for="actual-btn">Choose File</label>-->
+<!--        </div>-->
+    </div>
+
+     <script src="https://code.jquery.com/jquery-3.3.1.js"></script> <!-- Import Jquery Here-->
+<script>
+        $(document).ready(function() {
+        $('#resp_' + {{item.id}}).change(function() {
+            $.post("/toggle/", {
+                id: '{{item.id}}',
+                client_email: '{{email}}',
+                response: this.checked,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            });
+        });
+    });
+    $(document).ready(function() {
+            $('#textarea1_' + {{item.id}}).change(function() {
+            $.post("/commentSubmit/", {
+                id: '{{item.id}}',
+                client_email: '{{email}}',
+                comment: this.value,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
+            });
+        });
+    });
+
+    $(document).ready(function() {
+    $('.inputBox' + {{item.id}}).attr('required','required');
+    if ($('.checkbox' + {{item.id}}).is(':checked')){
+        if ($('.inputBox' + {{item.id}}).attr('required')) {
+           $('.inputBox' + {{item.id}}).removeAttr('required');
+        }
+    }
+    $('.checkbox' + {{item.id}}).change(function() {
+        if ($('.inputBox' + {{item.id}}).attr('required')) {
+           $('.inputBox' + {{item.id}}).removeAttr('required');
+        }
+        else {
+           $('.inputBox' + {{item.id}}).attr('required','required');
+        }
+    });
+});
+
+    $('#right-button').click(function() {
+       event.preventDefault();
+      $('#content').animate({
+        scrollLeft: "+=100px"
+      }, "medium");
+    });
+
+    $('#left-button').click(function() {
+      event.preventDefault();
+      $('#content').animate({
+        scrollLeft: "-=100px"
+      }, "medium");
+    });
+
+    function scroll_function() {
+      event.preventDefault();
+      $('#content').animate({
+        scrollLeft: "+=100px"
+      }, "medium");
+        }
+
+    </script>
+    {% endfor %}
+  </div>
+
+
+  <div class="container text-center mb-3">
+<!--      <input type="file" id="myFile" name="filename" />-->
+<!--          <button type="file" class="login-button btn mt-4 text-white">Upload a file</button>-->
+          <input type="file" name="myfile" />
+    <button type="submit" class="login-button btn mt-4 text-white" >Save And Continue<i class="fa fa-arrow-right me-2 mx-2"></i></button>
+    <button type="submit" formnovalidate class="login-button btn mt-4 text-white"  >Skip<i class="fa fa-arrow-right me-1 mx-1"></i></button>
+  </div>
+
+</form>
+</body>
+
+
+</html>
+

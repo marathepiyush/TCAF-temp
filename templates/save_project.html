@@ -1,0 +1,140 @@
+{% extends 'page.html' %}
+{% load crispy_forms_tags %}
+
+{% block style_css %}
+        body {
+            text-align: center;
+        }
+{% endblock %}
+
+{% block body_content %}
+    {% if not skip %}
+        <div style="width:100%; display:flex;margin-top:10px;padding:20px">
+            <div style="width:50%;text-align:center;margin-left:50px;">
+                <div>
+                    <h5>New Or Existing Project</h5>
+                </div>
+            </div>
+            <div style="width:50%;text-align:left;">
+                <div>
+                    <select name="" id="select">
+                        <option value="existing">Existing</option>
+                        <option value="new">New</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div style="width:100%; display:flex;padding:150px;margin:-50px">
+        <div style="width:50%;text-align:left;">
+            {% if not skip %}
+            <div id="org_div_new" class="hidden">
+                <h5>Project Details</h5>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <br>
+                    <button type="submit" class="btn btn-primary" name="save_choices">Proceed To customize assessment
+                    </button>
+                </form>
+            </div>
+            <div id="org_div_existing">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div id="div_id_org" class="form-group">
+                        <label for="id_orgg" class=" requiredField">Project<span class="asteriskField">*</span> </label>
+                        <div><select name="project" class="select form-control" id="id_orgg"></select></div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary" name="save_choices" id="create_assessment">Proceed To
+                        customize assessment
+                    </button>
+                </form>
+            </div>
+            {% else %}
+            <div id="org_div_new">
+                <h5>Project Details</h5>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <br>
+                    <button type="submit" class="btn btn-primary" name="save_choices">Proceed To customize assessment
+                    </button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block body_script %}
+    function openPopup() {
+        document.getElementById("myPopup").style.display = "block";
+    }
+
+    function closePopup() {
+        document.getElementById("myPopup").style.display = "none";
+    }
+
+    document.querySelector("#create_assessment").addEventListener("click", function(event) {
+        var selected_org = document.getElementById("id_orgg");
+        if (selected_org.value === "") {
+            openPopup();
+            event.preventDefault();
+        } else {
+            console.log(this);
+        }
+    });
+
+    var select = document.getElementById('select');
+    var org_div_new = document.getElementById('org_div_new');
+    var org_div_existing = document.getElementById('org_div_existing');
+
+    const arg = '{{org.id}}'
+    fetch(`/api/get-projs/?org=${arg}`)
+                .then(response => response.json())
+                .then(data => {
+                    var selectField = document.getElementById('id_orgg');
+                    selectField.innerHTML = "";
+                    data.projects.forEach(choice => {
+                        const option = document.createElement("option");
+                        option.value = choice;
+                        option.textContent = choice;
+                        selectField.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching subcategory choices:', error);
+                });
+
+    select.addEventListener("change", function(){
+
+        if(this.value==='existing'){
+            console.log('existing value selected');
+            org_div_new.classList.add('hidden');
+            org_div_existing.classList.remove('hidden');
+            const arg = '{{org.id}}'
+            fetch(`/api/get-projs/?org=${arg}`)
+                .then(response => response.json())
+                .then(data => {
+                    var selectField = document.getElementById('id_orgg');
+                    selectField.innerHTML = "";
+                    data.projects.forEach(choice => {
+                        const option = document.createElement("option");
+                        option.value = choice;
+                        option.textContent = choice;
+                        selectField.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching subcategory choices:', error);
+                });
+        }
+        else{
+            org_div_new.classList.remove('hidden');
+            org_div_existing.classList.add('hidden');
+        }
+
+    });
+{% endblock %}

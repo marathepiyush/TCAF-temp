@@ -1,0 +1,352 @@
+{% extends 'page.html' %}
+{% load static %}
+
+{% block head_imports %}
+    <script src="{% static 'js/check_uncheck.js' %}" defer></script>
+{% endblock %}
+
+{% block style_css %}
+#AlertName{
+  color: #F5F5F5;
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-right: 25px;
+}
+
+.top-heading {
+  width: 100%;
+  text-align: center;
+    background: #86BC25;
+    font-size: 30px;
+    font-style: normal;
+    color: #FFF;
+    font-weight: 700;
+    padding: 10px;
+    line-height: normal;
+    width: auto;
+height: 50px;
+flex-shrink: 0;
+}
+.vehicle{
+color: #FFF;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin-top: 11px;
+text-align: left;
+}
+.tr-box{
+width: 300px;
+height: 45px;
+flex-shrink: 0;
+background: #86BC25;
+text-align: left;
+}
+
+
+/* Styling buttons & webpage */
+
+body {
+  background: offwhite;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+{% endblock %}
+
+
+{% block body_content %}
+    <h1 class="top-heading">Select Dimensions and categories as required</h1> <br>
+
+
+
+{% if save_choice %}
+<form method="POST" action="{% url 'save_choice' type save_choice %}">
+    {% else %}
+    <form method="POST" action="{% url 'create_link' test_taker.id %}">
+        {% endif %}
+        {% csrf_token %}
+        <div class="h-90  " style="width:100%; display:flex; border: 1px solid; padding: 10px; ">
+            <div class="overflow-auto" style="margin-left: 50px;">
+                <ol class="tr-box">
+                    <input type="checkbox" class="vehicle" name="Organization Structure" id="Organization">
+                    <label class="vehicle" for="Organization Structure"> Organization Structure</label><br>
+                </ol>
+                <ol class="tr-innerbox">
+                    <input type="checkbox" class="Organization" name="Organization Structure_Business Alignment"
+                           style="margin-left: -70px;" id="Business Alignment">
+                    <label for="Business Alignment"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Business Alignment</label><br>
+                    <input type="checkbox" class="Organization" name="Organization Structure_Governance"
+                           style="margin-left: -132px;">
+                    <label for="Governance"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Governance</label><br>
+                    <input type="checkbox" class="Organization" name="Organization Structure_Innovation"
+                           style="margin-left: -142px;">
+                    <label for="Innovation"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Innovation</label><br>
+                    <input type="checkbox" class="Organization" name="Organization Structure_Tools and Processes"
+                           style="margin-left: -60px;">
+                    <label for="Tools and Processes"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Tools and Processes</label><br>
+                </ol>
+                <ol class="tr-box">
+                    <input type="checkbox" class="vehicle" name="Quality Engineering" id="QE">
+                    <label class="vehicle" for="Quality Engineering"> Quality Engineering</label><br>
+                </ol>
+                <ol class="tr-innerbox">
+                    <input type="checkbox" class="QE" name="Quality Engineering_Test Management"
+                           style="margin-left: -90px;">
+                    <label for="Test Management"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Test Management</label><br>
+                    <input type="checkbox" class="QE" name="Quality Engineering_Test Planning" value="Boat"
+                           style="margin-left: -125px;">
+                    <label for="Test Planning"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Test Planning</label><br>
+                    <input type="checkbox" class="QE" name="Quality Engineering_Test Design"
+                           style="margin-left: -140px;">
+                    <label for="Test Design"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Test Design</label><br>
+                    <input type="checkbox" class="QE" name="Quality Engineering_Test Execution"
+                           style="margin-left: -115px;">
+                    <label for="Test Execution"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Test Execution</label><br>
+                    <input type="checkbox" class="QE" name="Quality Engineering_Test Reporting"
+                           style="margin-left: -115px;">
+                    <label for="Test Reporting"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Test Reporting</label><br>
+                </ol>
+
+                <ol class="tr-box">
+                    <input type="checkbox" class="vehicle" name="Test Data Management" id="Test_Data">
+                    <label class="vehicle" for="Test Data Management"> Test Data Management</label><br>
+                </ol>
+                <ol class="tr-innerbox">
+                    <input type="checkbox" class="Test_Data" name="Test Data Management_Master Data Availability"
+                           style="margin-left: -55px;" id="MDA">
+                    <label for="MDA"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Master data Avalability</label><br>
+                    <input type="checkbox" class="Test_Data" name="Test Data Management_Data Masking"
+                           style="margin-left: -130px;">
+                    <label for="Data Masking"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Data Masking</label><br>
+                    <input type="checkbox" class="Test_Data" name="Test Data Management_Data Refresh"
+                           style="margin-left: -133px;">
+                    <label for="Data Refresh"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Data Refresh</label><br>
+                    <input type="checkbox" class="Test_Data" name="Test Data Management_TDM Tools and Services"
+                           style="margin-left: -45px;">
+                    <label for="TDM Tools and services"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        TDM Tools and services</label><br>
+
+                </ol>
+
+            </div>
+
+            <div class="w-100 " id="qualityEngButtons"
+                 style="max-width: 300px; max-height: 1000px; margin-left: 500px;  ">
+                <ol class="tr-box">
+                    <input type="checkbox" class="vehicle" name="Test Environment" id="TestEnv">
+                    <label class="vehicle" for="Test Environment"> Test Environment</label><br>
+                </ol>
+                <ol class="tr-innerbox">
+                    <input type="checkbox" class="TestEnv" name="Test Environment Management_Communication and Reporting"
+                           style="margin-left: -100px;">
+                    <label for="Communication & Reporting"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Communication & Reporting</label><br>
+                    <input type="checkbox" class="TestEnv" name="Test Environment Management_Integrations"
+                           style="margin-left: -235px;">
+                    <label for="Integrations"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Integrations</label><br>
+                    <input type="checkbox" class="TestEnv" name="Test Environment Management_Build & Deployment Management"
+                           style="margin-left: -180px;">
+                    <label for="Build & Deployment Management"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Build & Deployment Management</label><br>
+                </ol>
+                <ol class="tr-box">
+                    <input type="checkbox" class="vehicle" name="Specialization QE" id="Specialization">
+                    <label class="vehicle" for="Specialization QE">Specialization QE</label><br>
+                </ol>
+                <ol class="tr-innerbox">
+                    <input type="checkbox" class="Specialization" name="Specialization QE_Automation"
+                           style="margin-left: -230px;">
+                    <label for="Automation"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Automation</label><br>
+                    <input type="checkbox" class="Specialization" name="Specialization QE_Cloud Migration"
+                           style="margin-left: -195px;">
+                    <label for="Cloud Migration"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Cloud Migration</label><br>
+                    <input type="checkbox" class="Specialization" name="Specialization QE_Performance"
+                           style="margin-left: -215px;">
+                    <label for="Performance"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        Performance</label><br>
+                    <input type="checkbox" class="Specialization" name="Specialization QE_AI/ML"
+                           style="margin-left: -265px;">
+                    <label for="Performance"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        AI/ML</label><br>
+                </ol>
+                <br><br>
+                <ol class="tr-box">
+                    <input type="checkbox" name="DevOps" id="DevOps">
+                    <label class="vehicle" for="DevOps">DevOps</label><br>
+                </ol>
+                <ol class="tr-innerbox">
+                    <input type="checkbox" class="DevOps" name="DevOps_CI/CD/CT" style="margin-left: -240px;">
+                    <label for="CI/CD/CT"
+                           style="color: #000;font-family: Roboto;font-size: 18px;font-style: normal;font-weight: 500;line-height: normal;">
+                        CI/CD/CT</label><br>
+                </ol>
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-primary"
+               style="margin:auto; margin-bottom: 20px; border-radius: 10px; background: #86BC25; color: #FFF;font-family: Roboto;font-size: 24px;font-style: normal;font-weight: 500;line-height: normal; margin-left: 100px;"
+               value="Complete Customization">
+        <br>
+    </form>
+
+    <script>
+     $ = function(id) {
+      return document.getElementById(id);
+    }
+
+    var show = function(id) {
+        $(id).style.display ='block';
+    }
+    var hide = function(id) {
+        $(id).style.display ='none';
+    }
+
+    function Nav() {
+      var width = document.getElementById("mySidenav").style.width;
+      if (width === "0px" || width == "") {
+        document.getElementById("mySidenav").style.width = "280px";
+        $('.animated-icon').toggleClass('open');
+      }
+      else {
+        document.getElementById("mySidenav").style.width = "0px";
+        $('.animated-icon').toggleClass('open');
+      }
+      }
+      function closeNav() {
+                document.getElementById(
+                    "mySidenav").style.width = "0";
+                    document.getElementById("mySidenav").style.width = "0px";
+       $('.animated-icon').toggleClass('open');
+            }
+
+
+        function updateParentCheckbox(childCheckboxes, parentCheckbox) {
+            let allChecked = true;
+            for (const checkbox of childCheckboxes) {
+                if (!checkbox.checked) {
+                    allChecked = false;
+                    break;
+                }
+            }
+            parentCheckbox.checked = allChecked;
+        }
+
+        var parser = new DOMParser();
+
+        const Organization = document.getElementById("Organization");
+        const OrganizationChild = document.querySelectorAll(".Organization");
+
+        for (const checkbox of OrganizationChild) {
+            {% for item in choices %}
+                if('{{item}}'===checkbox.name){
+                    checkbox.checked = true;
+                }
+            {% endfor %}
+        }
+        updateParentCheckbox(OrganizationChild, Organization);
+
+        const QE = document.getElementById("QE");
+        const QEChild = document.querySelectorAll(".QE");
+
+        for (const checkbox of QEChild) {
+            {% for item in choices %}
+                if('{{item}}'===checkbox.name){
+                    checkbox.checked = true;
+                }
+            {% endfor %}
+        }
+        updateParentCheckbox(QEChild, QE);
+
+        const TestData = document.getElementById("Test_Data");
+        const TestDataChild = document.querySelectorAll(".Test_Data");
+
+        for (const checkbox of TestDataChild) {
+            {% for item in choices %}
+                if('{{item}}'===checkbox.name){
+                    checkbox.checked = true;
+                }
+            {% endfor %}
+        }
+        updateParentCheckbox(TestDataChild, TestData);
+
+        const TestEnv = document.getElementById("TestEnv");
+        const TestEnvChild = document.querySelectorAll(".TestEnv");
+
+        for (const checkbox of TestEnvChild) {
+            {% for item in choices %}
+                var decodedHTML = parser.parseFromString('{{item}}', "text/html").body.textContent;
+                var result = decodedHTML.replace(/^'(.*)'$/, '$1').trim();
+                if(result===checkbox.name){
+                    checkbox.checked = true;
+                }
+            {% endfor %}
+        }
+        updateParentCheckbox(TestEnvChild, TestEnv);
+
+        const Specialization = document.getElementById("Specialization");
+        const SpecializationChild = document.querySelectorAll(".Specialization");
+
+        for (const checkbox of SpecializationChild) {
+            {% for item in choices %}
+                //console.log('{{item}}', ' : ', checkbox.name, '{{item}}'===checkbox.name);
+                if('{{item}}'===checkbox.name){
+                    checkbox.checked = true;
+                }
+            {% endfor %}
+        }
+        updateParentCheckbox(SpecializationChild, Specialization);
+
+        const DevOps = document.getElementById("DevOps");
+        const DevOpsChild = document.querySelectorAll(".DevOps");
+
+        for (const checkbox of DevOpsChild) {
+            {% for item in choices %}
+                if('{{item}}'===checkbox.name){
+                    checkbox.checked = true;
+                }
+            {% endfor %}
+        }
+        updateParentCheckbox(DevOpsChild, DevOps);
+    </script>
+{% endblock %}
+</html>

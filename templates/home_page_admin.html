@@ -1,0 +1,700 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport"content="width=device-width,initial-scale=1.0"/>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Home_Page_1</title>
+
+ <style>
+  /*Nav Bar CSS*/
+.navbar{
+  max-width: 1525px;
+  height: 90px;
+  flex-shrink: 0;
+  border-bottom: 0.4px solid #F5F5F5;
+  background: #000;
+
+}
+.navbar-brand1{
+    color: #F5F5F5;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-decoration: none;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+.vl{
+  width: 2px;
+  height: 40px;
+  background: #F5F5F5;
+  margin:0 15px;
+  display: inline-block;
+
+}
+.navbar-brand2{
+  color: #86BC25;
+font-family: Roboto;
+font-size: 35px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+#login{
+margin-right: auto;
+width: 50px;
+height: 50px;
+flex-shrink: 0;
+margin-right: 20px;
+  }
+#loginName{
+  color: #F5F5F5;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+
+}
+#Alerts{
+  width: 50px;
+height: 50px;
+flex-shrink: 0;
+margin-right: 25px;
+}
+#AlertName{
+  color: #F5F5F5;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-right: 25px;
+}
+
+/*SideBar Menu */
+.menu-icon {
+  margin:15px 10px 0;
+}
+.animated-icon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  }
+
+  .animated-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  }
+
+  .animated-icon span {
+  background: #f3e5f5;
+  }
+
+  .animated-icon span:nth-child(1) {
+  top: 0px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  }
+
+  .animated-icon span:nth-child(2) {
+  top: 10px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  }
+
+  .animated-icon span:nth-child(3) {
+  top: 20px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+  }
+
+  .animated-icon.open span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  top: 0px;
+  left: 8px;
+  }
+
+  .animated-icon.open span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+  }
+
+  .animated-icon.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 21px;
+  left: 8px;
+}
+.sidenav {
+  height: 100%;
+  width: 0px;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  background-color: #0a0a0a!important;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 0px 0px 8px #888888;
+  overflow: hidden;
+}
+
+.sidenav a {
+  margin-top: 10px;
+  padding: 8px 8px 8px 16px;
+  text-decoration: none;
+  font-size: 22px;
+  color: #F5F5F5;
+  display: block;
+  transition: 0.3s;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+}
+
+.sidenav a:hover {
+  color: #F5F5F5;
+  background-color: green;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.sidenav::-webkit-scrollbar {
+  display: none;
+}
+
+.sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 15px;
+            font-size: 30px;
+            fill: #F5F5F5;
+            stroke-width: 3.6px;
+            stroke: #F5F5F5;
+}
+
+.container{
+ max-width:1364px;
+}
+
+.mySlides1{
+  width: 62%;
+  margin-top: 25px;
+}
+
+.mySlides1 .item {
+  position: relative;
+  padding: 24px;
+}
+.slide-heading {
+  color: #86BC25;
+  text-align:center;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom:40px;
+}
+.slide1 #SlideImage1,
+.slide2 #SlideImage1 {
+  width: 246px;
+  height: 356px;
+  transform: rotate(-17.09deg);
+  opacity: 0.90;
+  position:absolute;
+  top:0;
+  right:0;
+  overflow: auto;
+}
+
+.slide2 #SlideImage1  {
+  left:0;
+  right:inherit
+}
+.owl-carousel .owl-item img.mf-img{
+  width: 90.637px;
+  height: 90.637px;
+  border-radius: 120.637px;
+}
+.slide1 .mf-img {
+  margin-right:24px;
+}
+.slide2 .mf-img {
+  margin-left:24px;
+}
+#text1{
+  color: #F5F5F5;
+font-family: Roboto;
+font-size: 18.278px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-align: center;
+text-overflow: ellipsis;
+}
+#text2{
+  width: 492.601px;
+  color: #F5F5F5;
+font-family: Roboto;
+font-size: 14.623px;
+font-style: normal;
+font-weight: 400;
+line-height: 124.188%;
+margin-left: 25%;
+text-overflow: ellipsis;
+}
+.mrketing-forces-content {
+    display: flex;
+    position: relative;
+    z-index: 110;
+    color: #fff;
+    padding: 0 15px;
+    max-width: 588px;
+    margin: 16px auto;
+}
+
+.mf-text {
+  color: #F5F5F5;
+  font-size: 14.623px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.top-heading {
+  text-align: center;
+    margin: 10px auto;
+    background: #86BC25;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.content-wrapper {
+  display:flex;
+  justify-content: space-between;
+}
+
+.cw-right {
+  width:calc(38% - 25px)
+}
+
+.cw-card {
+  border: 0.4px solid rgba(0, 0, 0, 0.38);
+  background: #F5F5F5;
+  padding: 24px 18px;
+  display: flex;
+  color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top:25px;
+  margin-bottom: 15px;
+}
+
+.cw-card a {
+  color:#000;
+}
+
+.cw-img {
+  width:127px;
+  height: 80px;
+  object-fit: cover;
+  margin-right:24px;
+}
+
+
+
+.style1{
+  width: 415px;
+height: 1px;
+background: #E5E5E5;
+border-top: 2px solid;
+}
+.Hello{
+color: #F5F5F5;
+font-family: Roboto;
+font-size: 35px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-left: 30px;
+}
+.user{
+  color: #F5F5F5;
+font-family: Roboto;
+font-size: 35px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+justify-content: center;
+}
+.owl-carousel {
+  position: relative;
+  background: #000;
+}
+
+.owl-dots {
+  position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 12px;
+}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: #86BC25;
+}
+@media(max-width:1024px) {
+  .mySlides1,.cw-right {
+    width:100%;
+  }
+
+  .content-wrapper  {
+    flex-wrap: wrap;
+  }
+}
+
+@media(max-width:767px) {
+  .top-heading {
+    font-size: 18px;
+  }
+
+  .slide-heading {
+    font-size: 16px;
+  }
+  .mrketing-forces-content {
+    flex-wrap: wrap;
+  }
+}
+
+@media(max-width:375px){
+  .navbar{
+    flex-wrap: wrap;
+  }
+   .navbar-brand3{
+    font-size: 15px;
+   }
+   .vl{
+    height: 20px;
+   }
+   .navbar-brand2{
+    font-size: 15px;
+   }
+   .TCAF{
+    font-size: 10px;
+   }
+   #Alerts{
+    width: 30px;
+    height: 30px;
+   }
+
+   #AlertName{
+    font-size: 10px;
+   }
+   #login{
+
+    width: 30px;
+    height: 30px;
+   }
+   #loginName{
+    font-size: 10px;
+   }
+   .animated-icon{
+    width: 25px;
+    height: 20px;
+    margin-bottom: 3px;
+   }
+}
+
+    </style>
+
+</head>
+<body>
+
+<div class="row1">
+    <div class="col-1 d-flex justify-content-center">
+        <div id="mySidenav" class="sidenav">
+         <!--   <input id="Cancel" src="C:\DeloitteFI\Cancel.PNG" type="image"  alt="cancel" style="width: 30" height="30"  onclick="closeNav()">"/> -->
+         <h7 class="Hello">Hello, </h7> <h7 class="user">{{user.username}}</h7>
+         <a href="javascript:void(0)" class="closebtn"
+         onclick="closeNav()">
+         ×</a>
+         <div><hr class="style1"></div>
+
+            <a href="{% url 'home' %}">Home</a>
+           <a href="{% url 'save_org' %}">Organizations</a>
+           <a href="{% url 'assessment_review' %}">View My Assessments</a>
+            <a href="C:\DeloitteFI\TACF2.0\suggestion.html" target="_blank">Suggestions & Feedback</a>
+            <a href="C:\DeloitteFI\TACF2.0\help.html" target="_blank">Help & FAQ</a>
+        </div>
+
+    </div>
+
+
+<nav class="navbar">
+        <div class="menu-icon">
+            <div class="container" onclick="Nav()">
+              <div class="animated-icon"><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+        </div>
+
+           <a class="navbar-brand1" href="#" style="text-decoration: none;">
+            <b class="navbar-brand3"style="color: #F5F5F5">Deloitte<b style="width: 15px; height: 15px; flex-shrink: 0; color: #7FC241;">.</b></b>
+            <span class="vl"></span>
+            <span class="navbar-brand2" style="text-decoration: none; color: #86BC25;">TCAF<b class="TCAF" style="color: #86BC25; font-family: Roboto; font-size: 20px; font-style: normal; font-weight: 800; line-height: normal;">2.0</b></span>
+          </a>
+
+                       <a href="http://www.google.com" >
+                  <img id="Alerts" src="{% static 'images/Alert icon.svg' %}" alt="Alert" style="width:50" height="50">
+                  <br>
+                  <label  id="AlertName">Alerts</label>
+                </a>
+                <a href="{% url 'logout' %}" target="_blank">
+                  <img id="login" src="{% static 'images/Profile Icon.svg' %}" alt="login" style="width:50" height="50">
+                  <br>
+                  <label  id="loginName">{{user.username}}</label>
+                </a>
+</nav>
+<br>
+
+<div class="container">
+<h1 class="top-heading">It's a new world for quality engineering</h1>
+
+<div class="content-wrapper">
+
+
+    <div class="mySlides1">
+      <div class="owl-carousel owl-theme">
+        <div class="item slide1">
+          <h2 class="slide-heading">Market Forces Driving Change</h2>
+      <img id="SlideImage1" src="{% static 'images/Rectangle46.png' %}">
+
+      <div class="mrketing-forces-content">
+        <img class="mf-img" src="{% static 'images/Ellipse27.svg' %}">
+        <div>
+          <h6>Mainstreaming the metaverse</h6>
+          <p class="mf-text">
+            The future is already here. An expansion of metaverse use cases is enabling
+            organizations to transcend the physical barriers to improve digital interactions,
+            presenting a unique opportunity to refine their Q
+          </p>
+        </div>
+      </div>
+      <div class="mrketing-forces-content">
+        <img class="mf-img" src="{% static 'images/Ellipse28.svg' %}">
+        <div>
+          <h6>Unlocking the power of 5G computing</h6>
+          <p class="mf-text">
+            New 5G and IoT testing solutions are creating greater visibility,
+            faster time-to-market, and optimized 5G revenue streams—a game changer for QE leaders.
+          </p>
+        </div>
+      </div>
+      <div class="mrketing-forces-content">
+        <img class="mf-img" src="{% static 'images/Ellipse29.svg' %}">
+        <div>
+          <h6>Mainstreaming the metaverse</h6>
+          <p class="mf-text">
+            The future is already here. An expansion of metaverse use cases is enabling
+            organizations to transcend the physical barriers to improve digital interactions,
+            presenting a unique opportunity to refine their Q
+          </p>
+        </div>
+      </div>
+        </div>
+        <div class="item slide2">
+          <h2 class="slide-heading">Market Forces Driving Change</h2>
+          <img id="SlideImage1" src="{% static 'images/Rectangle46.png' %}">
+          <div class="mrketing-forces-content">
+            <div>
+              <h6>Mainstreaming the metaverse</h6>
+              <p class="mf-text">
+                The future is already here. An expansion of metaverse use cases is enabling
+                organizations to transcend the physical barriers to improve digital interactions,
+                presenting a unique opportunity to refine their Q
+              </p>
+            </div>
+            <br><br>
+            <img class="mf-img" src="{% static 'images/Ellipse20.svg' %}">
+          </div>
+          <div class="mrketing-forces-content mt-5">
+            <div>
+              <h6>Mainstreaming the metaverse</h6>
+              <p class="mf-text">
+                The future is already here. An expansion of metaverse use cases is enabling
+                organizations to transcend the physical barriers to improve digital interactions,
+                presenting a unique opportunity to refine their Q
+              </p>
+            </div>
+            <img class="mf-img" src="{% static 'images/Ellipse21.svg' %}">
+          </div>
+        </div>
+        <div class="item slide2">
+          <h2 class="slide-heading" style="color: #00ABAB;">QE Growth Accelerators</h2>
+          <img id="SlideImage1" src="{% static 'images/Rectangle46.png' %}">
+          <div class="mrketing-forces-content">
+            <div>
+              <h6>Reimagining test strategies</h6>
+              <p class="mf-text">
+                Advancements in software development and deployment methods are helping
+                organizations support process industrialization with more efficient
+                and effective testing strategies.
+              </p>
+            </div>
+            <img class="mf-img" src="{% static 'images/Ellipse35.svg' %}">
+          </div>
+          <div class="mrketing-forces-content mt-5">
+            <div>
+              <h6>Evolving test data management</h6>
+              <p class="mf-text">
+                So much data. So little time. As disparate data sources multiply and
+                 turnaround times shrink, data generation needs to be meaningful and
+                 secure while eliminating data set biases when handling large-scale volumes.
+              </p>
+            </div>
+            <img class="mf-img" src="{% static 'images/Ellipse36.svg' %}">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="cw-right">
+         <div class="cw-card">
+            <img src="{% static 'images/Ellipse27.svg' %}" alt="" class="cw-img" />
+            <div class="cw-body">
+              <p>The future is already here. An expansion of metaverse use cases is enabling
+                organizations to transcend the physical barriers to improve digital interactions,
+                presenting a unique opportunity to refine their Q</p>
+              <a href="https://deloi.tt/43kAnPO" target="_blank">https://deloi.tt/43kAnPO</a>
+            </div>
+         </div>
+         <div class="cw-card">
+          <img src="{% static 'images/Ellipse28.svg' %}" alt="" class="cw-img" />
+          <div class="cw-body">
+            <p>New 5G and IoT testing solutions are creating greater visibility,
+              faster time-to-market, and optimized 5G revenue streams—a game changer for QE leaders.</p>
+            <a href="https://deloi.tt/43kAnPO" target="_blank">https://deloi.tt/43kAnPO</a>
+          </div>
+       </div>
+       <div class="cw-card">
+        <img src="{% static 'images/Ellipse29.svg' %}" alt="" class="cw-img" />
+        <div class="cw-body">
+          <p>The future is already here. An expansion of metaverse use cases is enabling
+            organizations to transcend the physical barriers to improve digital interactions,
+            presenting a unique opportunity to refine their Q</p>
+          <a href="https://deloi.tt/43kAnPO" target="_blank">https://deloi.tt/43kAnPO</a>
+        </div>
+     </div>
+     <div class="cw-card">
+      <img src="{% static 'images/Rectangle46.png' %}" alt="" class="cw-img" />
+      <div class="cw-body">
+        <p>Advancements in software development and deployment methods are helping
+          organizations support process industrialization with more efficient
+          and effective testing strategies.</p>
+        <a href="https://deloi.tt/43kAnPO" target="_blank">https://deloi.tt/43kAnPO</a>
+      </div>
+   </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<!--<script type="text/javascript" src="switch_dimension_category.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function Nav() {
+  var width = document.getElementById("mySidenav").style.width;
+  if (width === "0px" || width == "") {
+    document.getElementById("mySidenav").style.width = "280px";
+    $('.animated-icon').toggleClass('open');
+  }
+  else {
+    document.getElementById("mySidenav").style.width = "0px";
+    $('.animated-icon').toggleClass('open');
+  }
+  }
+  function closeNav() {
+            document.getElementById(
+                "mySidenav").style.width = "0";
+                document.getElementById("mySidenav").style.width = "0px";
+   $('.animated-icon').toggleClass('open');
+        }
+
+    $('.owl-carousel').owlCarousel({
+        loop:false,
+        margin:10,
+        nav:false,
+        items:1,
+    })
+  </script>
+
+</body>
+</html>

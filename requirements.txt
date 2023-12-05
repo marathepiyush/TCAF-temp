@@ -1,0 +1,8 @@
+django
+django_forms_bootstrap
+openpyxl
+django_bootstrap4
+crispy_bootstrap4
+django-crispy-forms
+pandas
+django-tables2

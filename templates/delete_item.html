@@ -1,0 +1,8 @@
+<!-- delete_item.html -->
+<h1>Delete Item</h1>
+<p>Are you sure you want to delete "{{ item.initiative_id }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <button type="button"><a href="{% url 'initiative' pk %}" class="btn btn-secondary">Cancel</a></button>
+</form>

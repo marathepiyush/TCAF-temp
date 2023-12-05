@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap & CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="{% static 'dashboard_css/style.css' %}" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- Font Awesome JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- w3 cSS -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <title>Form</title>
+</head>
+  <!-- Just an image -->
+<nav class="navbar navbar-expand-lg bg-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand" target="_blank">
+        <img src="{% static 'images/logo1.png' %}" width=130 height="25" class="d-inline-block align-top" alt="">
+      </a>
+    </div>
+</nav>
+<body class="content-font bg-light">
+<!--<h4>{{baseline_scores}}</h4>-->
+<!--<h4>{{actual_scores}}</h4>-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-7">
+            <div class="page-content page-container" id="page-content">
+    <div class="">
+        <div class="row">
+            <div class="container-fluid d-flex justify-content-center">
+                <div class="col-sm-4 col-md-10">
+                    <div class=" shadow card">
+                        <div class="card-header content-font" ><b>The Final Scores</b></div>
+                        <div class="card-body content-font" style="height: 650px">
+                            <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                                </div>
+                                <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                                </div>
+                            </div> <canvas id="chart-line" width="10000" height="12000" class="chartjs-render-monitor" style="display: block; width: 10000px; height: 12000px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+        <div class="col-5">
+            <div class="shadow p-3 mb-5 bg-white rounded content-font">
+          <div class="w3-center">
+            <img src="images/solution.svg" height="150" alt="">
+          </div>
+          <h4 class="mt-1" style="font-weight:900">Our Recommendations</h4>
+          <hr>
+
+                <p class=""><i class="fa fa-check-circle icon-color me-2"></i>Please go ahead and explore this page<br><a href = 'https://www2.deloitte.com/us/en/pages/consulting/articles/quality-engineering-and-testing-trends.html'>Deloitte Quality Engineering Testing Trends</a>
+          </p>
+<!--          <p class=""><i class="fa fa-check-circle icon-color me-2"></i>-->
+<!--              <b>Future of quality engineering</b> <br>-->
+<!--            Overall, the future of quality engineering will center around scaling intelligent automation, perfecting continuous testing, securing the enterprise, and generating meaningful test data.-->
+<!--          </p>-->
+          <p class=""><i class="fa fa-check-circle icon-color me-2"></i>
+            This trends report explores the top concerns, considerations, and opportunities identified by survey respondents and provides practical takeaways.
+               </p>
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+<script>
+    $(document).ready(function() {
+        var ctx = $("#chart-line");
+        var myLineChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: {{chosen_topic | safe}} ,
+                datasets: [
+
+                {
+                    data: {{actual_scores}},
+                    label: "Actual Score",
+                    borderColor: "#77dd77",
+<!--                    backgroundColor: '#FF7F7F'-->
+                },
+                {
+                    data: {{baseline_scores}},
+                    label: "Baseline Score",
+                    borderColor: "#FF7F7F",
+<!--                    backgroundColor: '#77dd77',-->
+                }]
+            },
+            options: {
+                scale:{
+                    ticks : {
+                        display : false,
+                        min : 0
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'The final Score'
+                }
+            }
+        });
+    });
+</script>
+</html>

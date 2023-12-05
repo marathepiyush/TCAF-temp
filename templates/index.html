@@ -1,0 +1,108 @@
+{% extends 'page.html' %}
+
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-7">
+        <img src="{% static 'images/login_1.svg'%}" height="550" alt="" class="mt-5">
+      </div>
+      <div class="col-5">
+
+        <div class="shadow p-3 mb-5 bg-white rounded mt-5 content-font">
+          <div class="row">
+            <div class="col-10">
+              <h3 style="font-weight:800">TCAF Assessment</h3>
+            </div>
+            <div class="col-2 mt-2">
+              <img src="{% static 'images/logo2.png'%}" height="25" alt="" class="">
+            </div>
+
+          </div>
+
+          <hr style="border-color:#86BC25">
+          <p style="font-size:14px" class="text-muted">
+          Welcome to Testing Capability Assessment Framework. This tool is designed to help you assess
+          your testing processess as per the Industry standards and provides Deloitte a chance to help
+          you achieve them.</p>
+          <div class="form-outer">
+
+            <form action="{% url 'user_choice' %}" method="POST"  enctype="multipart/form-data" class="form" >
+              {% csrf_token %}
+              <div class="form-input">
+                <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                <input type="text" name="client_name"  placeholder="Enter your Full Name" required>
+              </div>
+              <div class="form-input">
+                <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                <input type="email" name="client_email"  placeholder="Johndoe@gmail.com" required>
+              </div>
+              <div class="form-input">
+                    <span class="icon"><i class="fa fa-suitcase" aria-hidden="true"></i></span>
+                    <input type="text" name="organization"  placeholder="Organization Name" required>
+                  </div>
+              <div class="row">
+                <div class="col-6">
+<!--                  <div class="form-input">-->
+<!--                    <span class="icon"><i class="fa fa-suitcase" aria-hidden="true"></i></span>-->
+<!--                    <input type="text" name="organization"  placeholder="Organization Name" required>-->
+<!--                  </div>-->
+              <div class="form-input">
+              <select class="form-select" name="Project Nature"  aria-label="Default select example" required>
+
+                  <option value="" selected hidden> Project Nature</option>
+                  <option value="1">Agile</option>
+                  <option value="2">Cloud</option>
+                </select>
+              </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-input">
+                    <select class="form-select" name="roles" id = "roles"  aria-label="Default select example" required>
+
+                      <option value="" selected hidden>Select Designation</option>
+                      <option value="1">QA Director</option>
+                      <option value="2">QA Manager</option>
+                      <option value="3">QA Team Lead</option>
+                      <option value="4">QA Architect</option>
+                    </select>
+
+<!--                    <div>{{ roles }}</div>-->
+                  </div>
+                </div>
+              </div>
+              <div class="form-input">
+
+                <select class="form-select" name="business_domain"  aria-label="Default select example" required>
+
+                  <option value="" selected hidden> Industry</option>
+                  <option value="1">Life Sciences and Healthcare</option>
+                  <option value="2">Advertising, Marketing and Commerce</option>
+                  <option value="3">Energy, Resources & Industrials</option>
+                  <option value="4">Financial Services</option>
+                  <option value="5">Government & Public Services</option>
+                  <option value="6">Technology, Media & Telecommunications</option>
+                  <option value="7">Others</option>
+                </select>
+              </div>
+
+              <div class="form-input">
+                <input type="file" value='upload file' id="myFile" name="filename">
+              </div>
+
+              <div class="container d-flex justify-content-center">
+                <button type="submit"  class="login-button btn mt-4 round-edge text-white"><a style="text-decoration: None" >Proceed with Assessment</a><i class="fa fa-arrow-right me-2 mx-2"></i></button>
+<!--            <input type="submit" value="Proceed with assessment">-->
+              </div>
+              <p class="text-muted mt-4" style="font-size:12px;">
+                By clicking the proceed button , you agree to our <a href="https://www2.deloitte.com/us/en/footerlinks1/terms-of-use.html?icid=bottom_terms-of-use" class="">terms of use</a> and <a href="https://www2.deloitte.com/us/en/footerlinks1/privacy.html" class="">privacy policies </a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FINAL</title>
+</head>
+<body>
+<h2 align="center">Yayy! you have reached the final page!</h2>
+<p>Hello {{name}}! <br> Here is your score -</p>
+<table>
+    <tr>
+        <th>Topic</th>
+        <th>Baseline Score</th>
+        <th>Your score</th>
+    </tr>
+    <br>
+    {% for key, value in info.items %}
+        <tr>
+            <td>{{ key }}</td>
+            {% for b, a in value.items %}
+                <td>{{ a }}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

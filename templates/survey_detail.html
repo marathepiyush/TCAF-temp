@@ -1,0 +1,10 @@
+{% extends 'page.html' %}
+
+{% block body_content %}
+    <br><br>
+    <h1>Hey {{admin}}! Please find the link below for user <u>{{test_taker.fullname}}</u></h1>
+    <h3>{{link}}</h3>
+    <h3>ID: {{test_taker.id}}</h3>
+    <h3>Username: {{username}}</h3>
+    <h3>Password: {{test_taker.password}}</h3>
+{% endblock %}

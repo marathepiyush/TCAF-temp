@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap & CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!--  <link href="{% static 'css/style.css'%}" rel="stylesheet">-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- Font Awesome JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- w3 cSS -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Search</title>
+  <style>
+      input[type=text]{
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+
+    input[type=submit] {
+      background-color: #04AA6D;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    .container {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      display:flex;
+	  justify-content: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Just an image -->
+  <nav class="navbar navbar-expand-lg bg-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand" target="_blank">
+        <img src="{% static 'images/logo1.png' %}" width=130 height="25" class="d-inline-block align-top" alt="">
+      </a>
+<!--        <button type="button" class="btn btn-light round-edge"><a style="text-decoration: None" href="{% url 'admin_search_page' %}">Admin Login</a></button>-->
+    </div>
+  </nav>
+{% if record_exists == False %}
+    <script>alert("No records found with this email id. Try entering another one.")</script>
+{% endif %}
+  <div class="container">
+      <form action="{% url 'admin_view_page' %}" method="POST" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        <label for="email_id">Enter the email id for which you want to see survey information</label><br>
+        <input type="email" name="email_id" id="email_id" required><br><br>
+        <input type="submit" value="Submit">
+<!--        <script type="text/javascript">-->
+<!--          var no_record_check = {{ record_exists }};-->
+<!--          alert(no_record_check);-->
+<!--          if (no_record_check == 'False') {-->
+<!--              alert('No record found');-->
+<!--          }-->
+<!--        </script>-->
+      </form>
+    </div>
+</body>
+</html>

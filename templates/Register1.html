@@ -1,0 +1,264 @@
+{% extends 'page.html' %}
+{% load static %}
+
+{% block title %}
+    New User Registration
+{% endblock %}
+
+{% block head_imports %}
+    <script src="{% static 'js/popup.js' %}" defer></script>
+{% endblock %}
+
+{% block style_css %}
+    .column {
+      float: left;
+      width: 50%;
+      padding: 20px;
+    }
+
+    /* Clearfix (clear floats) */
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    th, td {
+      text-align: left;
+      padding: 15px;
+    }
+
+    tr:nth-child(even) {
+      background-color: none;
+    }
+    .info {
+    background-color: black;
+    }
+    .container{
+     max-width:1364px;
+    }
+    /* Styles for the popup */
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .popup-content {
+        background-color: white;
+        width: 50%;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        position: relative;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .navbar-brand3{
+      color: #000;
+      text-decoration: none;
+      margin-left: 360px;
+
+    }
+    body{
+    background-color: #000000
+    }
+
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="column">
+        <div style="margin: 5px; margin-left:200px;">
+            <img src="{% static 'images/logo11.png' %}" style="width:300px;height:300px;">
+        </div>
+    </div>
+    <div class="column">
+        <caption>
+            <button type="button" class="btn btn-success"
+                    style="width:400px;height:40px;background-color:#26890D">
+                New User Registration <font color="black">(All fields are mandatory)</font>
+            </button>
+        </caption>
+
+        <form method="POST">
+        {% csrf_token %}
+        <table style="margin: 5px; margin-right:220px; width:85%; cellspacing=0;cellpadding=1px;">
+            <tr>
+                <td><font color="white" size="2px">Full Name</font></td>
+                <td>{{form.fullname}}</td>
+            </tr>
+            <tr>
+                <td><font color="white" size="2px">Email ID</font></td>
+
+                <td>{{form.email}}</td>
+            </tr>
+            <tr>
+                <td><font color="white" size="2px">Role</font></td>
+
+                <td>
+                    {{form.role}}
+            </tr>
+            <tr>
+                <td><font color="white" size="2px">Organization</font></td>
+
+                <td>{{form.org}}</td>
+            </tr>
+            <tr>
+                <td><font color="white" size="2px">Project</font></td>
+
+                <td>{{form.project}}</td>
+            </tr>
+        </table>
+        <table style="width:95%;">
+            <tr style="cellspacing=0;">
+                <td><font color="white" size="2px">Set Password</font></td>
+
+                <td>{{form.password}}</td>
+
+                <td><font color="white" size="2px">Confirm Password</font></td>
+
+                <td>{{form.confirm_password}}</td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <font color="white" size="2px">Min of 7 characters - must include 1 lower case,1 upper case, 1
+                        special
+                        characters</font>
+                </td>
+            </tr>
+        </table>
+
+
+    <center>
+        <span id = "message" style="color:red"> </span><br><br>
+        <button type="submit" class="btn btn-success"
+                style="width:200px;height:40px;background-color:
+#86BC25" id="submit_btn">Register User
+        </button>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close" id="closePopup">&times;</span>
+                <h2>Popup Content</h2>
+                <p>This is a popup.</p>
+            </div>
+        </div>
+    </center>
+    </form>
+         </div>
+</div>
+
+{% endblock %}
+
+{% block body_script %}
+
+        document.getElementById("id_org").addEventListener("change", function () {
+        const orgId = this.value;
+        const subcategoryField = document.getElementById("id_project");
+
+        // Fetch the choices for the selected category
+        fetch(`/api/get-project-choices/${orgId}/`)
+            .then(response => response.json())
+            .then(data => {
+                // Clear existing choices
+                subcategoryField.innerHTML = "";
+
+                // Add new choices
+                data.choices.forEach(choice => {
+                    const option = document.createElement("option");
+                    option.value = choice.project;
+                    option.textContent = choice.project;
+                    subcategoryField.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching subcategory choices:', error);
+            });
+        });
+
+        var lowercase_pattern = new RegExp(
+          "^(?=.*[a-z])"
+        );
+        var uppercase_pattern = new RegExp(
+          "(?=.*[A-Z])"
+        );
+        var special_pattern = new RegExp(
+          "(?=.*[-+_!@#$%^&*.,?]).+$"
+        );
+        var numeric_pattern = new RegExp(
+          "(?=.*\\d)"
+        );
+
+        document.getElementById("submit_btn").addEventListener('click', function(event) {
+            var pw = document.getElementById("id_password").value;
+            //check empty password field
+            if(pw == "") {
+             document.getElementById("message").innerHTML = "**Fill the password please!";
+             event.preventDefault();
+            }
+
+            //minimum password length validation
+            if(pw.length < 7) {
+             document.getElementById("message").innerHTML = "**Password length must be atleast 7 characters";
+             event.preventDefault();
+            }
+
+            //maximum length of password validation
+            if(pw.length > 15) {
+             document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";
+             event.preventDefault();
+            }
+
+            if (!lowercase_pattern.test(pw)) {
+              document.getElementById("message").innerHTML = "**Password must contain 1 lowercase character";
+              event.preventDefault();
+            }
+
+            if (!uppercase_pattern.test(pw)) {
+              document.getElementById("message").innerHTML = "**Password must contain 1 uppercase character";
+              event.preventDefault();
+            }
+
+            if (!numeric_pattern.test(pw)) {
+              document.getElementById("message").innerHTML = "**Password must contain 1 numeric character";
+              event.preventDefault();
+            }
+
+            if (!special_pattern.test(pw)) {
+              document.getElementById("message").innerHTML = "**Password must contain 1 special character";
+              event.preventDefault();
+            }
+
+        });
+
+        document.getElementById('submit_btn').disabled = true;
+        document.querySelector("#id_password").addEventListener('keyup', function () {
+            if (document.getElementById('id_password').value ==
+            document.getElementById('id_confirm_password').value) {
+            document.getElementById('submit_btn').disabled = false;
+          } else {
+            document.getElementById('submit_btn').disabled = true;
+          }
+        });
+        document.querySelector("#id_confirm_password").addEventListener('keyup', function () {
+            if (document.getElementById('id_password').value ==
+            document.getElementById('id_confirm_password').value) {
+            document.getElementById('submit_btn').disabled = false;
+          } else {
+            document.getElementById('submit_btn').disabled = true;
+          }
+        });
+
+{% endblock %}

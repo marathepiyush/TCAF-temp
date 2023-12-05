@@ -1,0 +1,11 @@
+<html>
+<head>
+    <title>Score details</title>
+</head>
+<body>
+    <h1>Hey {{user.username}}! Please find your score as listed below:</h1>
+    {% for key,value in avg_score.items %}
+        <h3>Average Score for {{key}}: {{ value }}%</h3>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,158 @@
+{% extends 'page.html' %}
+{% load crispy_forms_tags %}
+
+{% block style_css %}
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+        }
+{% endblock %}
+
+{% block body_content %}
+    <div style="width:100%; display:flex;margin-top:10px;padding:20px">
+        <div style="width:50%;text-align:center;margin-left:50px;">
+            <div>
+                <h5>New Or Existing Organization</h5>
+            </div>
+        </div>
+        <div style="width:50%;text-align:left;">
+            <div>
+                <select name="" id="select">
+                    <option value="existing">Existing</option>
+                    <option value="new">New</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div id="myPopup" class="popup">
+        <!-- Popup content -->
+        <div class="popup-content">
+            <h4>Please select an Org before proceeding</h4>
+            <p>If no Org is shown in dropdown, please  create an Org using 'New' option in 'New Or Existing Organization' selection above</p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <div style="width:100%; display:flex;padding:150px;margin:-50px">
+        <div style="width:50%;text-align:left;margin-left:50px;">
+            <h5>Organizational Details</h5>
+            <div id="org_div_new" class="hidden">
+                <form method="POST" id="form1">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <br>
+                    <button type="submit" class="btn btn-primary" name="btn1">Proceed To create Project</button>
+                    <button type="submit" class="btn btn-primary" name="save_choices">Proceed To customize assessment</button>
+                </form>
+            </div>
+            <div id="org_div_existing">
+                <form method="POST" id="form2">
+                    {% csrf_token %}
+                    <div id="div_id_org" class="form-group">
+                        <label for="id_orgg" class="requiredField">Organization<span class="asteriskField">*</span> </label>
+                        <div> <select name="org" class="select form-control" id="id_orgg"></select> </div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary" name="btn3" id="create_assessment1">Proceed To edit/create Project</button>
+                    <button type="submit" class="btn btn-primary" name="save_choices" id="create_assessment2">Proceed To customize assessment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block body_script %}
+    function openPopup() {
+        document.getElementById("myPopup").style.display = "block";
+    }
+
+    function closePopup() {
+        document.getElementById("myPopup").style.display = "none";
+    }
+
+    document.querySelector("#create_assessment1").addEventListener("click", function(event) {
+        var selected_org = document.getElementById("id_orgg");
+        if (selected_org.value === "") {
+            openPopup();
+            event.preventDefault();
+        } else {
+            console.log(this);
+        }
+    });
+
+    document.querySelector("#create_assessment2").addEventListener("click", function(event) {
+        var selected_org = document.getElementById("id_orgg");
+        if (selected_org.value === "") {
+            openPopup();
+            event.preventDefault();
+        } else {
+            console.log(this);
+        }
+    });
+
+    var select = document.getElementById('select');
+    var org_div_new = document.getElementById('org_div_new');
+    var org_div_existing = document.getElementById('org_div_existing');
+
+    fetch(`/api/get-orgs/`)
+                .then(response => response.json())
+                .then(data => {
+                    var selectField = document.getElementById('id_orgg');
+                    selectField.innerHTML = "";
+                    data.orgs.forEach(choice => {
+                        const option = document.createElement("option");
+                        option.value = choice;
+                        option.textContent = choice;
+                        selectField.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching subcategory choices:', error);
+                });
+    select.addEventListener("change", function(){
+        console.log('event listener called: ', select.value, this.value);
+        if(this.value==='existing'){
+            console.log('existing value selected');
+            org_div_new.classList.add('hidden');
+            org_div_existing.classList.remove('hidden');
+            fetch(`/api/get-orgs/`)
+                .then(response => response.json())
+                .then(data => {
+                    var selectField = document.getElementById('id_orgg');
+                    selectField.innerHTML = "";
+                    data.orgs.forEach(choice => {
+                        const option = document.createElement("option");
+                        option.value = choice;
+                        option.textContent = choice;
+                        selectField.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching subcategory choices:', error);
+                });
+        }
+        else{
+            org_div_new.classList.remove('hidden');
+            org_div_existing.classList.add('hidden');
+        }
+
+    });
+{% endblock %}
+
